@@ -11,7 +11,25 @@ import user from '../../assets/profile/user.svg';
 
 const Home = () => {
 
-   
+    const { data = [] } = useQuery({
+        queryKey: [''],
+        queryFn: async () => {
+            try {
+
+                const res = await fetch(`https://notaryapp-staging.herokuapp.com/plugin/getPluginSampleResponse`, {
+                    method: "POST"
+                })
+                const data = await res.json();
+                return data;
+
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    })
+
+    // console.log(data);
 
     return (
         <div className="">
