@@ -7,11 +7,12 @@ import sms from '../../assets/profile/sms.svg';
 import call from '../../assets/profile/call.svg';
 import location from '../../assets/profile/location.svg';
 import user from '../../assets/profile/user.svg';
+import Loading from '../Loading/Loading';
 
 
 const Home = () => {
 
-    const { data = [] } = useQuery({
+    const { data = [], isLoading } = useQuery({
         queryKey: [''],
         queryFn: async () => {
             try {
@@ -29,7 +30,17 @@ const Home = () => {
         }
     })
 
-    // console.log(data);
+    if (isLoading) {
+        return <Loading></Loading>
+    };
+
+    const personalInfo = data?.response?.personalInfo;
+    const { photoURL, firstName, lastName, email, phoneNumber, createdOn, businessDetails
+    } = personalInfo;
+
+    // console.log(data?.response?.personalInfo);
+    // console.log(businessDetails);
+
 
     return (
         <div className="">
@@ -47,30 +58,30 @@ const Home = () => {
                         </div>
 
                         <div className="mr-18 text-center">
-                            <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp" alt="" className="w-24 h-24 m-auto rounded-full object-cover md:w-28 md:h-28 lg:w-28 lg:h-28" />
-                            <h5 className="hidden mt-4 text-xl font-semibold text-gray-200 lg:block">name</h5>
+                            <img src={photoURL} alt="userPhoto" className="w-24 h-24 m-auto rounded-full object-cover md:w-28 md:h-28 lg:w-28 lg:h-28" />
+                            <h5 className="hidden mt-4 text-xl font-semibold text-gray-200 lg:block">{firstName} {lastName}</h5>
                         </div>
 
-                        <ul className="px-10 space-y-2 tracking-wide mt-8">
+                        <ul className="px-10 md:px-64 lg:px-10 space-y-2 tracking-wide mt-8">
                             <li>
                                 <div className="flex items-center space-x-4 rounded-md text-gray-200 group">
                                     <img src={sms} className="w-6 " alt="" />
-                                    <span className="group-hover:text-gray-700">email  </span>
+                                    <span>{email}  </span>
                                 </div>
 
-                                <div className="mt-4 flex items-center space-x-4 rounded-md text-gray-200 group">
+                                <div className="mt-5 flex items-center space-x-4 rounded-md text-gray-200 group">
                                     <img src={call} className="w-6" alt="" />
-                                    <span className="group-hover:text-gray-700">Number </span>
+                                    <span>{phoneNumber}</span>
                                 </div>
 
-                                <div className="mt-4 flex items-center space-x-4 rounded-md text-gray-200 group">
+                                <div className="mt-5 flex items-center space-x-4 rounded-md text-gray-200 group">
                                     <img src={location} className="w-6 " alt="" />
-                                    <span className="group-hover:text-gray-700">location  </span>
+                                    <span>{businessDetails?.businessAddress} </span>
                                 </div>
 
-                                <div className="mt-4 flex items-center space-x-4 rounded-md text-gray-200 group">
+                                <div className="mt-5 flex items-center space-x-4 rounded-md text-gray-200 group">
                                     <img src={user} className="w-6 " alt="" />
-                                    <span className="group-hover:text-gray-700">Id </span>
+                                    <span>Insurance Id {createdOn} </span>
                                 </div>
                             </li>
 
