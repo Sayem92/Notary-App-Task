@@ -12,6 +12,7 @@ import Loading from '../Loading/Loading';
 import Stepper1 from '../Stepper1/Stepper1';
 import Stepper2 from '../Stepper2/Stepper2';
 import Stepper3 from '../Stepper3/Stepper3';
+import Stepper4 from '../Stepper4/Stepper4';
 
 
 const Home = () => {
@@ -247,10 +248,14 @@ const Home = () => {
                             ></Stepper2>
                         }
                         {
-                            step3 && step2 && step1 && 
+                            step3 && step2 && step1 && !step4 &&
                             <Stepper3
                                 handleStepChange={handleStepChange}
                             ></Stepper3>
+                        }
+                        {
+                            step4 && step3 && step2 && step1 && 
+                            <Stepper4></Stepper4>
                         }
 
 

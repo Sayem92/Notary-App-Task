@@ -283,7 +283,7 @@ const Stepper2 = ({ handleStepChange }) => {
                                 Submit
                             </button>
                             {
-                                next !== false ? "" :
+                                next === false ? "" :
 
                                     <div className=' mr-8'>
                                         <p className="mt-4 font-semibold text-gray-800">Next step

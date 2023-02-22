@@ -18,7 +18,7 @@ const Stepper3 = ({ handleStepChange }) => {
            location, date, time
         }
 
-        console.log(stepper3Data);
+        // console.log(stepper3Data);
 
         if (!location || !date || !time) {
             return
@@ -26,7 +26,7 @@ const Stepper3 = ({ handleStepChange }) => {
 
         localStorage.setItem("stepper3Data", JSON.stringify({stepper3Data}))
         setNext(true);
-        // reset();
+        reset();
 
 
     }
