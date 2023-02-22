@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../assets/bolt-circle.svg';
 import arrow from '../../assets/right-arrow.svg';
+import leftArrow from '../../assets/left-arrow-back.svg';
+
 
 import sms from '../../assets/profile/sms.svg';
 import call from '../../assets/profile/call.svg';
@@ -11,6 +13,10 @@ import Loading from '../Loading/Loading';
 
 
 const Home = () => {
+    const [step1, setStep1] = useState('1');
+    const [step2, setStep2] = useState('');
+    const [step3, setStep3] = useState('');
+    const [step4, setStep4] = useState('');
 
     const { data = [], isLoading } = useQuery({
         queryKey: [''],
@@ -38,9 +44,18 @@ const Home = () => {
     const { photoURL, firstName, lastName, email, phoneNumber, createdOn, businessDetails
     } = personalInfo;
 
-    // console.log(data?.response?.personalInfo);
-    // console.log(businessDetails);
 
+const handleStepChange = ()=>{
+    if(step1){
+        setStep2('2')
+    }
+    if(step2){
+        setStep3('3')
+    }
+    if(step3){
+        setStep4('4')
+    }
+}
 
     return (
         <div className="">
@@ -59,7 +74,7 @@ const Home = () => {
 
                         <div className="mr-18 text-center">
                             <img src={photoURL} alt="userPhoto" className="w-24 h-24 m-auto rounded-full object-cover md:w-28 md:h-28 lg:w-28 lg:h-28" />
-                            <h5 className="hidden mt-4 text-xl font-semibold text-gray-200 lg:block">{firstName} {lastName}</h5>
+                            <h5 className="mt-4 text-3xl font-bold text-gray-200 lg:block">{firstName} {lastName}</h5>
                         </div>
 
                         <ul className="px-10 md:px-64 lg:px-10 space-y-2 tracking-wide mt-8">
@@ -93,6 +108,129 @@ const Home = () => {
                 <div className='col-span-3 mb-10'>
 
                     <div className="px-6 pt-6 2xl:container">
+
+                        <div className='flex justify-start gap-5 mb-8'>
+                            <img src={leftArrow} className='mt-2 w-6 h-6' alt="" />
+                            <div>
+                                <h1 className='font-semibold text-2xl'>New Appointment Request</h1>
+                                <p>Some great coverage for less</p>
+                            </div>
+                        </div>
+
+
+                        {/* steps  */}
+                        <div className=" my-4 border-b-2 pb-4">
+                            <div className="flex pb-3">
+                                {/* start  */}
+                                <div className="flex-1">
+                                    <div className="w-5 h-5 my-3 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center">
+                                        <span className="text-black text-center w-full">
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div className="w-1/6 align-center items-center align-middle content-center flex">
+                                    <div className="w-full bg-violet-500 rounded items-center align-middle align-center flex-1">
+                                        {
+                                            step1 === '1' ?
+
+                                                <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                                :
+
+                                                <div className="bg-gray-300 text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                        }
+                                    </div>
+                                </div>
+
+                                {/* first  */}
+
+                                <div className="flex-1">
+                                    <div onClick={() => setStep1('1')} 
+                                  
+                                    className={step1 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}
+                                  
+                                    >
+                                        <span className="text-white text-center w-full">
+                                            1
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div className="w-1/6 align-center items-center align-middle content-center flex">
+                                    <div className="w-full bg-violet-500 rounded items-center align-middle align-center flex-1">
+
+                                        {
+                                            step2 === '2' ?
+
+
+                                                <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                                :
+                                                <div className="bg-gray-300 text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                        }
+                                    </div>
+                                </div>
+
+
+                                {/* second  */}
+
+                                <div className="flex-1">
+                                    <div onClick={() => setStep2('2')}  className={step2 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
+                                        <span className="text-white text-center w-full">
+                                            2</span>
+                                    </div>
+                                </div>
+
+                                <div className="w-1/6 align-center items-center align-middle content-center flex">
+                                    <div className="w-full bg-violet-500 rounded items-center align-middle align-center flex-1">
+
+                                        {
+                                            step3 === '3' ?
+
+                                                <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                                :
+                                                <div className="bg-gray-300 text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                        }
+                                    </div>
+                                </div>
+
+                                {/* third */}
+
+                                <div className="flex-1">
+                                    <div onClick={() => setStep3('3')}  className={step3 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
+                                        <span className="text-white text-center w-full">
+                                            3</span>
+                                    </div>
+                                </div>
+
+
+                                <div className="w-1/6 align-center items-center align-middle content-center flex">
+                                    <div className="w-full bg-violet-500 rounded items-center align-middle align-center flex-1">
+
+                                        {
+                                            step4 === '4' ?
+
+                                                <div className="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                                :
+                                                <div className="bg-gray-300 text-xs leading-none py-1 text-center text-grey-darkest rounded  width: 100%" ></div>
+                                        }
+                                    </div>
+                                </div>
+
+                                {/* fourth  */}
+                                <div className="flex-1">
+                                    <div onClick={() => setStep4('4')}  className={step4 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
+                                        <span className="text-white text-center w-full">
+                                            4</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
                         <div className="grid gap-6 md:grid-cols-2 grid-cols-1">
                             {/* first section  */}
                             <div className='space-y-4'>
@@ -191,8 +329,10 @@ const Home = () => {
 
 
                     <div className='flex justify-end mr-8 mt-4'>
-                        <p className="mt-4 font-semibold text-gray-800">Next step <span className='p-1 pb-2 rounded-2xl bg-yellow-300'>
-                            <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span> </p>
+                        <p className="mt-4 font-semibold text-gray-800">Next step
+                         <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
+                            <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span> 
+                        </p>
                     </div>
 
 
