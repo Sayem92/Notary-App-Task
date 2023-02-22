@@ -28,7 +28,6 @@ const Stepper2 = ({ handleStepChange }) => {
             loanNo, propertyAddress
         }
 
-        console.log(stepper2Data);
 
         if(!fullName|| !phoneNumber|| !email ||
             !companyName|| !agentName|| !companyEmail|| !companyPhone||

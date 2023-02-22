@@ -18,7 +18,6 @@ const Stepper3 = ({ handleStepChange }) => {
            location, date, time
         }
 
-        // console.log(stepper3Data);
 
         if (!location || !date || !time) {
             return
@@ -71,12 +70,12 @@ const Stepper3 = ({ handleStepChange }) => {
 
 
 
-                        <div class="-mx-3 flex flex-wrap">
-                            <div class="w-full px-3 sm:w-1/2">
-                                <div class="mb-5">
+                        <div className="-mx-3 flex flex-wrap">
+                            <div className="w-full px-3 sm:w-1/2">
+                                <div className="mb-5">
                                     <label
-                                        for="date"
-                                        class="mb-3 block text-base font-medium text-[#07074D]"
+                                        htmlFor="date"
+                                        className="mb-3 block text-base font-medium text-[#07074D]"
                                     >
                                         Date
                                     </label>
@@ -87,16 +86,16 @@ const Stepper3 = ({ handleStepChange }) => {
                                             required: "Date is required"
                                         })}
                                         id="date"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                     />
                                     {errors.date && <p className='text-red-600'>{errors.date?.message}</p>}
                                 </div>
                             </div>
-                            <div class="w-full px-3 sm:w-1/2">
-                                <div class="mb-5">
+                            <div className="w-full px-3 sm:w-1/2">
+                                <div className="mb-5">
                                     <label
-                                        for="time"
-                                        class="mb-3 block text-base font-medium text-[#07074D]"
+                                        htmlFor="time"
+                                        className="mb-3 block text-base font-medium text-[#07074D]"
                                     >
                                         Time
                                     </label>
@@ -107,7 +106,7 @@ const Stepper3 = ({ handleStepChange }) => {
                                             required: "Time is required"
                                         })}
                                         id="time"
-                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                     />
                                     {errors.time && <p className='text-red-600'>{errors.time?.message}</p>}
                                 </div>
