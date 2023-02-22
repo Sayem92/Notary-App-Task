@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import editProfile from '../../assets/edit-profile.svg'
 import arrow from '../../assets/right-arrow.svg';
 
@@ -29,14 +30,15 @@ const Stepper2 = ({ handleStepChange }) => {
         }
 
 
-        if(!fullName|| !phoneNumber|| !email ||
-            !companyName|| !agentName|| !companyEmail|| !companyPhone||
-            !loanNo|| !propertyAddress){
+        if (!fullName || !phoneNumber || !email ||
+            !companyName || !agentName || !companyEmail || !companyPhone ||
+            !loanNo || !propertyAddress) {
             return
         }
 
-        localStorage.setItem("stepper2Data", JSON.stringify({stepper2Data}))
+        localStorage.setItem("stepper2Data", JSON.stringify({ stepper2Data }))
         setNext(true);
+        toast.success("Please go to the next")
         reset();
 
 
@@ -274,20 +276,26 @@ const Stepper2 = ({ handleStepChange }) => {
                         </div>
 
 
+                        <div className='flex justify-end mt-5'>
 
-                        <div className='flex justify-between mt-5'>
-                            <button type="submit"
-                                className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                            >
-                                Submit
-                            </button>
+                            {
+                                next === true ? "" :
+
+                                    <button type="submit" onClick={handleAddInfo}
+                                        className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                    >
+                                        Submit
+                                    </button>
+                            }
+
+
                             {
                                 next === false ? "" :
 
                                     <div className=' mr-8'>
                                         <p className="mt-4 font-semibold text-gray-800">Next step
                                             <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
-                                                <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
+                                                <img className='cursor-pointer w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
                                         </p>
                                     </div>
                             }

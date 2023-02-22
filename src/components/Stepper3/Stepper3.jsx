@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import editProfile from '../../assets/edit-profile.svg'
 import arrow from '../../assets/right-arrow.svg';
 
@@ -15,7 +16,7 @@ const Stepper3 = ({ handleStepChange }) => {
         const time = data.time
 
         const stepper3Data = {
-           location, date, time
+            location, date, time
         }
 
 
@@ -23,8 +24,9 @@ const Stepper3 = ({ handleStepChange }) => {
             return
         }
 
-        localStorage.setItem("stepper3Data", JSON.stringify({stepper3Data}))
+        localStorage.setItem("stepper3Data", JSON.stringify({ stepper3Data }))
         setNext(true);
+        toast.success("Please go to the next")
         reset();
 
 
@@ -118,19 +120,26 @@ const Stepper3 = ({ handleStepChange }) => {
 
 
 
-                        <div className='flex justify-between mt-5'>
-                            <button type="submit"
-                                className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                            >
-                                Submit
-                            </button>
+                        <div className='flex justify-end mt-5'>
+
+                            {
+                                next === true ? "" :
+
+                                    <button type="submit" onClick={handleAddInfo}
+                                        className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                                    >
+                                        Submit
+                                    </button>
+                            }
+
+
                             {
                                 next === false ? "" :
 
                                     <div className=' mr-8'>
                                         <p className="mt-4 font-semibold text-gray-800">Next step
                                             <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
-                                                <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
+                                                <img className='cursor-pointer w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
                                         </p>
                                     </div>
                             }

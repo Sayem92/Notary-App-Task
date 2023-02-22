@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
-const Stepper4 = () => {
+const Stepper4 = ({ handleStepChange }) => {
     const [data, setData] = useState([]);
     const [confirm, setConfirm] = useState('');
 
@@ -20,7 +21,7 @@ const Stepper4 = () => {
 
 
 
-    
+
 
     const handleSubmitData = () => {
 
@@ -33,6 +34,7 @@ const Stepper4 = () => {
             .then((response) => response.json())
             .then(data => {
                 setConfirm("ok")
+                toast.success(data?.msg)
                 console.log(data);
             })
     }
@@ -48,7 +50,7 @@ const Stepper4 = () => {
                     <div className='flex justify-center items-center min-h-screen'>
                         <div className='border bg-slate-100 text-center p-10 rounded-md'>
 
-                            <button
+                            <button onClick={handleStepChange}
                                 className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
                             >
                                 Thank you
@@ -63,7 +65,7 @@ const Stepper4 = () => {
                     </div>
 
                     :
-                    
+
                     <div className='flex justify-center items-center min-h-screen'>
                         <button onClick={handleSubmitData}
                             className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
@@ -73,7 +75,7 @@ const Stepper4 = () => {
                     </div>
 
             }
-          
+
         </div>
     );
 };

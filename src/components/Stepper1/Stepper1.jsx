@@ -13,9 +13,9 @@ const Stepper1 = ({ handleStepChange }) => {
 
     const handleAddInfo = () => {
 
-        if(!services || !signatures || !files || !signers || !witness){
+        if (!services || !signatures || !files || !signers || !witness) {
             return toast.error("Please select a service and fill up input fields");
-        } 
+        }
 
         const stepper1Data = {
             servicesName: services,
@@ -25,12 +25,16 @@ const Stepper1 = ({ handleStepChange }) => {
             witness: witness
         }
 
-        localStorage.setItem("stepper1Data", JSON.stringify({stepper1Data}));
+        localStorage.setItem("stepper1Data", JSON.stringify({ stepper1Data }));
         setNext(true);
-
+        setServices('');
+        setSignatures('');
+        setFiles('');
+        setSigners('');
+        setWitness('');
+        toast.success("Please go to the next")
 
     }
-
 
     return (
         <div>
@@ -39,12 +43,12 @@ const Stepper1 = ({ handleStepChange }) => {
                 <div className='space-y-4'>
                     <div className="md:col-span-2 lg:col-span-1" >
 
-                        <div 
-                        onClick={()=>setServices('Notary Singing Agent')} 
+                        <div
+                            onClick={() => setServices('Notary Singing Agent')}
 
-                        className={services === "Notary Singing Agent" ? "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-yellow-200" 
-                        : 
-                        "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white"}>
+                            className={services === "Notary Singing Agent" ? "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-yellow-200"
+                                :
+                                "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white"}>
 
                             <div>
                                 <h5 className="text-2xl font-semibold text-gray-600 ">Notary Singing Agent</h5>
@@ -59,11 +63,11 @@ const Stepper1 = ({ handleStepChange }) => {
 
                     <div>
                         <div
-                         onClick={()=>setServices('Remote Online Notary')}
+                            onClick={() => setServices('Remote Online Notary')}
 
-                       className={services === "Remote Online Notary" ? "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-yellow-200" 
-                        : 
-                        "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white"}>
+                            className={services === "Remote Online Notary" ? "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-yellow-200"
+                                :
+                                "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white"}>
 
                             <div>
                                 <h5 className="text-2xl font-semibold text-gray-600 ">Remote Online Notary</h5>
@@ -78,12 +82,12 @@ const Stepper1 = ({ handleStepChange }) => {
                     </div>
 
                     <div>
-                        <div 
-                        onClick={()=>setServices('Mobile General Notary')}
+                        <div
+                            onClick={() => setServices('Mobile General Notary')}
 
-                        className={services === "Mobile General Notary" ? "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-yellow-200" 
-                        : 
-                        "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white"}>
+                            className={services === "Mobile General Notary" ? "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-yellow-200"
+                                :
+                                "h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white"}>
 
                             <div>
                                 <h5 className="text-2xl font-semibold text-gray-600 ">Mobile General Notary</h5>
@@ -110,21 +114,21 @@ const Stepper1 = ({ handleStepChange }) => {
                                 <h1 className='text-xl font-normal'>No of Extra Signatures</h1>
                                 <p className='text-gray-500'>Please enter zero, if only one signature is required</p>
                             </div>
-                            <input onChange={(e)=>setSignatures(e.target.value)} type="text"  className='w-14 h-10 pl-2 border border-gray-400 rounded' />
+                            <input onChange={(e) => setSignatures(e.target.value)} type="text" className='w-14 h-10 pl-2 border border-gray-400 rounded' value={signatures} />
                         </div>
 
                         <div className='mt-7 flex justify-between items-center'>
                             <div>
                                 <h1 className='text-xl font-normal'>How many files will you be uploading in the session</h1>
                             </div>
-                            <input onChange={(e)=>setFiles(e.target.value)}  type="text" className='w-20 h-10 pl-2 border border-gray-400 rounded' />
+                            <input onChange={(e) => setFiles(e.target.value)} type="text" className='w-20 h-10 pl-2 border border-gray-400 rounded' value={files} />
                         </div>
 
                         <div className='mt-7 flex justify-between items-center'>
                             <div>
                                 <h1 className='text-xl font-normal'>Number of Signers</h1>
                             </div>
-                            <input onChange={(e)=>setSigners(e.target.value)}  type="text" className='w-20 h-10 pl-2 border border-gray-400 rounded' />
+                            <input onChange={(e) => setSigners(e.target.value)} type="text" className='w-20 h-10 pl-2 border border-gray-400 rounded' value={signers} />
                         </div>
 
                         <div className='mt-7 flex justify-between items-center'>
@@ -132,7 +136,7 @@ const Stepper1 = ({ handleStepChange }) => {
                                 <h1 className='text-xl font-normal'>Do you Need Witness?</h1>
                                 <p className='text-gray-500'>Do not enter anything if you are bring your own Witness</p>
                             </div>
-                            <input onChange={(e)=>setWitness(e.target.value)}  type="text" className='w-14 h-10 pl-2 border border-gray-400 rounded' />
+                            <input onChange={(e) => setWitness(e.target.value)} type="text" className='w-14 h-10 pl-2 border border-gray-400 rounded' value={witness} />
                         </div>
 
                         <h5 className="mt-14 text-2xl font-bold text-gray-400 text-center">Your approximate Quote: $59</h5>
@@ -144,23 +148,28 @@ const Stepper1 = ({ handleStepChange }) => {
             </div>
 
 
-            <div className='flex justify-between mt-5'>
-                            <button type="submit" onClick={handleAddInfo}
-                                className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-                            >
-                                Submit
-                            </button>
-                            {
-                                next === false ? "" :
+            <div className='flex justify-end mt-5'>
 
-                                    <div className=' mr-8'>
-                                        <p className="mt-4 font-semibold text-gray-800">Next step
-                                            <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
-                                                <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
-                                        </p>
-                                    </div>
-                            }
+                {
+                    next === true ? "" :
+
+                        <button type="submit" onClick={handleAddInfo}
+                            className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                        >
+                            Submit
+                        </button>
+                }
+                {
+                    next === false ? "" :
+
+                        <div className=' mr-8'>
+                            <p className="mt-4 font-semibold text-gray-800">Next step
+                                <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
+                                    <img className='cursor-pointer w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
+                            </p>
                         </div>
+                }
+            </div>
         </div>
     );
 };

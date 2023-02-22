@@ -47,17 +47,22 @@ const Home = () => {
     const { photoURL, firstName, lastName, email, phoneNumber, createdOn, businessDetails
     } = personalInfo;
 
-    // console.log(data);
+    
 
     const handleStepChange = () => {
         if (step1) {
-            setStep2('2')
+            setStep2('2');
         }
         if (step2) {
-            setStep3('3')
+            setStep3('3');
         }
         if (step3) {
-            setStep4('4')
+            setStep4('4');
+        }
+        if (step4) {
+            setStep2('');
+            setStep3('');
+            setStep4('');
         }
     }
 
@@ -255,7 +260,9 @@ const Home = () => {
                         }
                         {
                             step4 && step3 && step2 && step1 && 
-                            <Stepper4></Stepper4>
+                            <Stepper4
+                            handleStepChange={handleStepChange}
+                            ></Stepper4>
                         }
 
 
