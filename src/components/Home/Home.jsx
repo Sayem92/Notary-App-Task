@@ -114,7 +114,7 @@ const Home = () => {
                 </aside>
 
 
-                <div className='col-span-3 mb-10'>
+                <div className='col-span-3 mb-20'>
 
                     <div className="px-6 pt-6 2xl:container">
 

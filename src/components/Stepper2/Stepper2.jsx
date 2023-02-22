@@ -38,7 +38,7 @@ const Stepper2 = ({ handleStepChange }) => {
 
         localStorage.setItem("stepper2Data", JSON.stringify({ stepper2Data }))
         setNext(true);
-        toast.success("Please go to the next")
+        toast.success("Please go to the next!!")
         reset();
 
 
@@ -47,7 +47,7 @@ const Stepper2 = ({ handleStepChange }) => {
     return (
         <div>
 
-            <div className="flex items-center justify-start px-10 py-5">
+            <div className="flex items-center justify-start px-2 md:px-10 py-5">
 
                 <div className="mx-auto w-full ">
                     <form onSubmit={handleSubmit(handleAddInfo)}>

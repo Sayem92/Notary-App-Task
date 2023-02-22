@@ -35,7 +35,7 @@ const Stepper4 = ({ handleStepChange }) => {
             .then(data => {
                 setConfirm("ok")
                 toast.success(data?.msg)
-                console.log(data);
+                // console.log(data);
             })
     }
 
@@ -68,7 +68,7 @@ const Stepper4 = ({ handleStepChange }) => {
 
                     <div className='flex justify-center items-center min-h-screen'>
                         <button onClick={handleSubmitData}
-                            className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                            className="hover:shadow-form rounded-md bg-[#08ec1b] py-3 px-3 md:px-8 text-center text-base font-semibold text-white outline-none"
                         >
                             Confirm Schedule Appointment
                         </button>
