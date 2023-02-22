@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import logo from '../../assets/bolt-circle.svg';
-import arrow from '../../assets/right-arrow.svg';
 import leftArrow from '../../assets/left-arrow-back.svg';
 
 
@@ -11,6 +10,7 @@ import location from '../../assets/profile/location.svg';
 import user from '../../assets/profile/user.svg';
 import Loading from '../Loading/Loading';
 import Stepper1 from '../Stepper1/Stepper1';
+import Stepper2 from '../Stepper2/Stepper2';
 
 
 const Home = () => {
@@ -45,7 +45,7 @@ const Home = () => {
     const { photoURL, firstName, lastName, email, phoneNumber, createdOn, businessDetails
     } = personalInfo;
 
-    console.log(data);
+    // console.log(data);
 
     const handleStepChange = () => {
         if (step1) {
@@ -234,22 +234,20 @@ const Home = () => {
 
                         {/* change section  */}
                         {
-                            step1 &&
-                            <Stepper1></Stepper1>
+                            step1 && !step2 &&
+                            <Stepper1
+                                handleStepChange={handleStepChange}
+                            ></Stepper1>
+                        }
+                        {
+                            step2 && step1 === '1' &&
+                            <Stepper2
+                                handleStepChange={handleStepChange}
+                            ></Stepper2>
                         }
 
 
                     </div>
-
-
-
-                    <div className='flex justify-end mr-8 mt-4'>
-                        <p className="mt-4 font-semibold text-gray-800">Next step
-                            <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
-                                <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
-                        </p>
-                    </div>
-
 
 
                 </div>

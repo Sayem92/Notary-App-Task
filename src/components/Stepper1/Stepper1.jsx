@@ -1,7 +1,7 @@
 import React from 'react';
 import arrow from '../../assets/right-arrow.svg';
 
-const Stepper1 = () => {
+const Stepper1 = ({handleStepChange}) => {
     return (
         <div>
             <div className="grid gap-6 md:grid-cols-2 grid-cols-1">
@@ -97,6 +97,13 @@ const Stepper1 = () => {
 
                             </div>
                         </div>
+
+                        <div className='flex justify-end mr-8 mt-4'>
+                        <p className="mt-4 font-semibold text-gray-800">Next step
+                            <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
+                                <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
+                        </p>
+                    </div>
         </div>
     );
 };
