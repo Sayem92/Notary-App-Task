@@ -10,10 +10,11 @@ import call from '../../assets/profile/call.svg';
 import location from '../../assets/profile/location.svg';
 import user from '../../assets/profile/user.svg';
 import Loading from '../Loading/Loading';
+import Stepper1 from '../Stepper1/Stepper1';
 
 
 const Home = () => {
-    const [step1, setStep1] = useState('1');
+    const [step1] = useState('1');
     const [step2, setStep2] = useState('');
     const [step3, setStep3] = useState('');
     const [step4, setStep4] = useState('');
@@ -44,18 +45,19 @@ const Home = () => {
     const { photoURL, firstName, lastName, email, phoneNumber, createdOn, businessDetails
     } = personalInfo;
 
+    console.log(data);
 
-const handleStepChange = ()=>{
-    if(step1){
-        setStep2('2')
+    const handleStepChange = () => {
+        if (step1) {
+            setStep2('2')
+        }
+        if (step2) {
+            setStep3('3')
+        }
+        if (step3) {
+            setStep4('4')
+        }
     }
-    if(step2){
-        setStep3('3')
-    }
-    if(step3){
-        setStep4('4')
-    }
-}
 
     return (
         <div className="">
@@ -146,10 +148,9 @@ const handleStepChange = ()=>{
                                 {/* first  */}
 
                                 <div className="flex-1">
-                                    <div onClick={() => setStep1('1')} 
-                                  
-                                    className={step1 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}
-                                  
+                                    <div
+                                        className={step1 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}
+
                                     >
                                         <span className="text-white text-center w-full">
                                             1
@@ -176,7 +177,7 @@ const handleStepChange = ()=>{
                                 {/* second  */}
 
                                 <div className="flex-1">
-                                    <div onClick={() => setStep2('2')}  className={step2 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
+                                    <div className={step2 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
                                         <span className="text-white text-center w-full">
                                             2</span>
                                     </div>
@@ -198,7 +199,7 @@ const handleStepChange = ()=>{
                                 {/* third */}
 
                                 <div className="flex-1">
-                                    <div onClick={() => setStep3('3')}  className={step3 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
+                                    <div className={step3 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
                                         <span className="text-white text-center w-full">
                                             3</span>
                                     </div>
@@ -220,7 +221,7 @@ const handleStepChange = ()=>{
 
                                 {/* fourth  */}
                                 <div className="flex-1">
-                                    <div onClick={() => setStep4('4')}  className={step4 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
+                                    <div className={step4 ? "w-10 h-10 bg-violet-500 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center" : "w-10 h-10 bg-violet-200 border-2 border-grey-light mx-auto rounded-full text-lg text-black flex items-center"}>
                                         <span className="text-white text-center w-full">
                                             4</span>
                                     </div>
@@ -231,107 +232,21 @@ const handleStepChange = ()=>{
                         </div>
 
 
-                        <div className="grid gap-6 md:grid-cols-2 grid-cols-1">
-                            {/* first section  */}
-                            <div className='space-y-4'>
-                                <div className="md:col-span-2 lg:col-span-1" >
-                                    <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
-
-                                        <div>
-                                            <h5 className="text-2xl font-semibold text-gray-600 ">Notary Singing Agent</h5>
-
-                                            <p className="mt-2 text-gray-500">Suitable for those who have purchased a brand new car </p>
-                                            <p className="mt-4 font-semibold text-gray-700">View details <span>
-                                                <img className='w-6 h-6 inline-block' src={arrow} alt="view arrow" /></span> </p>
-                                        </div>
+                        {/* change section  */}
+                        {
+                            step1 &&
+                            <Stepper1></Stepper1>
+                        }
 
 
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
-
-                                        <div>
-                                            <h5 className="text-2xl font-semibold text-gray-600 ">Remote Online Notary</h5>
-
-                                            <p className="mt-2 text-gray-500">Suitable for those who already have a valid third party cover </p>
-                                            <p className="mt-4 font-semibold text-gray-700">View details <span>
-                                                <img className='w-6 h-6 inline-block' src={arrow} alt="view arrow" /></span> </p>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
-
-                                        <div>
-                                            <h5 className="text-2xl font-semibold text-gray-600 ">Mobile General Notary</h5>
-
-                                            <p className="mt-2 text-gray-500">Suitable for those who use the car infrequently </p>
-
-                                            <p className="mt-4 font-semibold text-gray-700">View details <span>
-                                                <img className='w-6 h-6 inline-block' src={arrow} alt="view arrow" /></span> </p>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* second section  */}
-                            <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
-
-                                <div>
-                                    <h5 className="text-2xl font-semibold text-gray-600 text-center">Calculate your Costs for RON!</h5>
-
-                                    <div className='mt-7 flex justify-between items-center'>
-                                        <div>
-                                            <h1 className='text-xl font-normal'>No of Extra Signatures</h1>
-                                            <p className='text-gray-500'>Please enter zero, if only one signature is required</p>
-                                        </div>
-                                        <input type="text" className='w-14 h-10 border border-gray-400 rounded' />
-                                    </div>
-
-                                    <div className='mt-7 flex justify-between items-center'>
-                                        <div>
-                                            <h1 className='text-xl font-normal'>How many files will you be uploading in the session</h1>
-                                        </div>
-                                        <input type="text" className='w-20 h-10 border border-gray-400 rounded' />
-                                    </div>
-
-                                    <div className='mt-7 flex justify-between items-center'>
-                                        <div>
-                                            <h1 className='text-xl font-normal'>Number of Signers</h1>
-                                        </div>
-                                        <input type="text" className='w-20 h-10 border border-gray-400 rounded' />
-                                    </div>
-
-                                    <div className='mt-7 flex justify-between items-center'>
-                                        <div>
-                                            <h1 className='text-xl font-normal'>Do you Need Witness?</h1>
-                                            <p className='text-gray-500'>Do not enter anything if you are bring your own Witness</p>
-                                        </div>
-                                        <input type="text" className='w-14 h-10 border border-gray-400 rounded' />
-                                    </div>
-
-                                    <h5 className="mt-14 text-2xl font-bold text-gray-400 text-center">Your approximate Quote: $55</h5>
-
-                                </div>
-
-
-                            </div>
-                        </div>
                     </div>
 
 
 
                     <div className='flex justify-end mr-8 mt-4'>
                         <p className="mt-4 font-semibold text-gray-800">Next step
-                         <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
-                            <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span> 
+                            <span onClick={handleStepChange} className='ml-2 p-1 pb-2 rounded-2xl bg-yellow-300'>
+                                <img className=' w-6 h-6 inline-block' src={arrow} alt="Next step" /></span>
                         </p>
                     </div>
 
