@@ -11,6 +11,7 @@ import user from '../../assets/profile/user.svg';
 import Loading from '../Loading/Loading';
 import Stepper1 from '../Stepper1/Stepper1';
 import Stepper2 from '../Stepper2/Stepper2';
+import Stepper3 from '../Stepper3/Stepper3';
 
 
 const Home = () => {
@@ -240,10 +241,16 @@ const Home = () => {
                             ></Stepper1>
                         }
                         {
-                            step2 && step1 === '1' &&
+                            step2 && step1 && !step3 && 
                             <Stepper2
                                 handleStepChange={handleStepChange}
                             ></Stepper2>
+                        }
+                        {
+                            step3 && step2 && step1 && 
+                            <Stepper3
+                                handleStepChange={handleStepChange}
+                            ></Stepper3>
                         }
 
 

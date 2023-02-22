@@ -21,7 +21,6 @@ const Stepper2 = ({ handleStepChange }) => {
         const loanNo = data.loanNo;
         const propertyAddress = data.propertyAddress
 
-        // console.table(fullName, phoneNumber, email, companyName, agentName, companyEmail, companyPhone, loanNo, propertyAddress)
 
         const stepper2Data = {
             fullName, phoneNumber, email,
@@ -37,7 +36,7 @@ const Stepper2 = ({ handleStepChange }) => {
             return
         }
 
-        localStorage.setItem("stepper1Data", JSON.stringify({stepper2Data}))
+        localStorage.setItem("stepper2Data", JSON.stringify({stepper2Data}))
         setNext(true);
         reset();
 
@@ -284,7 +283,7 @@ const Stepper2 = ({ handleStepChange }) => {
                                 Submit
                             </button>
                             {
-                                next === false ? "" :
+                                next !== false ? "" :
 
                                     <div className=' mr-8'>
                                         <p className="mt-4 font-semibold text-gray-800">Next step
